@@ -816,3 +816,10 @@ body[class*="settings_page_pods-"] {
 		margin-bottom: 10px;
 	}
 }
+
+/**
+ * Hide web components before they're defined by browser (#7123)
+ */
+:not(:defined) {
+	display: none;
+}
