@@ -933,7 +933,7 @@ function pods_help( $text, $url = null, $container = null ) {
 	}
 
 	wp_register_script( 'pods-tooltip-init', PODS_URL . 'ui/js/pods-tooltip.js', array(), PODS_VERSION );
-  pods_form_enqueue_script( 'pods-tooltip-init' );
+	pods_form_enqueue_script( 'pods-tooltip-init' );
 
 	pods_form_enqueue_script( 'pods' );
 	pods_form_enqueue_style( 'pods' );
