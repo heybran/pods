@@ -932,6 +932,9 @@ function pods_help( $text, $url = null, $container = null ) {
 		pods_form_enqueue_script( 'pods-qtip-init' );
 	}
 
+	wp_register_script( 'pods-tooltip-init', PODS_URL . 'ui/js/pods-tooltip.js', array(), PODS_VERSION );
+  pods_form_enqueue_script( 'pods-tooltip-init' );
+
 	pods_form_enqueue_script( 'pods' );
 	pods_form_enqueue_style( 'pods' );
 
@@ -966,7 +969,7 @@ function pods_help( $text, $url = null, $container = null ) {
 		$text .= '<br /><br /><a href="' . esc_url( $url ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Find out more', 'pods' ) . ' &raquo;</a>';
 	}
 
-	echo '<img src="' . esc_url( PODS_URL ) . 'ui/images/help.png" alt="' . esc_attr( $text ) . '" class="pods-icon pods-qtip" />';
+	echo '<pods-tooltip>' . $text . '</pods-tooltip>';
 }
 
 /**
