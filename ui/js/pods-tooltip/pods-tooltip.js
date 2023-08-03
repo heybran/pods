@@ -1,15 +1,15 @@
 class PodsTooltip extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow( { mode: 'open' } );
-    this.defer = ( window.requestIdleCallback || requestAnimationFrame ).bind( window );
-    window.addEventListener( 'scroll', this.setPositionOnScroll.bind( this ) );
-  }
+	constructor() {
+		super();
+		this.attachShadow( { mode: 'open' } );
+		this.defer = ( window.requestIdleCallback || requestAnimationFrame ).bind( window );
+		window.addEventListener( 'scroll', this.setPositionOnScroll.bind( this ) );
+	}
 
 	connectedCallback() {
 		this.ariaExpanded = 'false';
 		this.shadowRoot.innerHTML = `
-      <style>${this.constructor.css}</style>
+      <style>${ this.constructor.css }</style>
       <div part="wrapper" class="tooltip-wrapper">
         <button
           part="button"
@@ -20,20 +20,20 @@ class PodsTooltip extends HTMLElement {
           <span class="sr-only"></span>
         </button>
         <div slot="content" class="tooltip-content">
-          ${this.innerHTML}
+          ${ this.innerHTML }
         </div>
       </div>
     `;
-		this.tooltipContent.addEventListener( 'transitionend' , () => {
+		this.tooltipContent.addEventListener( 'transitionend', () => {
 			if ( this.tooltipContent.classList.contains( 'visible' ) ) {
 				this.ariaExpanded = 'true';
 			} else {
 				this.ariaExpanded = 'false';
 			}
-		});
-		this.defer(() => {
-			this.innerHTML = `<!-- Original content has been moved into shadowRoot -->`;
-		});
+		} );
+		this.defer( () => {
+			this.innerHTML = '<!-- Original content has been moved into shadowRoot -->';
+		} );
 	}
 
 	get button() {
@@ -65,16 +65,16 @@ class PodsTooltip extends HTMLElement {
 
 	setPosition() {
 		const { left, top } = this.button.getBoundingClientRect();
-		const y = top - this.tooltipContentHeight - 2;
-		const x = left + this.buttonWidth / 2;
-		this.style.setProperty( '--tooltip-left', `${x}px` );
-		this.style.setProperty( '--tooltip-top', `${y}px` );
+		const y = top - ( this.tooltipContentHeight - 2 );
+		const x = left + ( this.buttonWidth / 2 );
+		this.style.setProperty( '--tooltip-left', `${ x }px` );
+		this.style.setProperty( '--tooltip-top', `${ y }px` );
 	}
 
 	setPositionOnScroll() {
 		if ( this.ariaExpanded === 'false' ) {
-      return;
-    }
+			return;
+		}
 		this.setPosition();
 	}
 
