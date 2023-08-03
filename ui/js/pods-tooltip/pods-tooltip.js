@@ -86,81 +86,80 @@ class PodsTooltip extends HTMLElement {
 
   static get css() {
     return `
-      :host {
-        display: inline-flex;
-        --tooltip-arrow-size: 12px;
-      }
-
-      svg {
-        width: 18px;
-        height: 18px;
-      }
-
-      button {
-        background: transparent;
-        border: none;
-        border-radius: 50%;
-        padding: 0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        color: inherit;
-      }
-
-      button:is(:hover, :focus-visible, :focus) {
-        outline-offset: 2px;
-        outline: 1px auto #007cba;
-      }
-
-      .tooltip-wrapper {
-        position: relative;
-        display: inline-flex;
-      }
-
-      .tooltip-content {
-        position: fixed;
-        opacity: 0;
-        pointer-events: none;
-        background-color: var(--tooltip-background-color, #333);
-        border-radius: 4px;
-        padding: 1em 1.2em;
-        left: var(--tooltip-left);
-        top: calc(var(--tooltip-top) - var(--tooltip-arrow-size));
-        transform: translateX(-50%);
-        transition: opacity .3s ease;
-        will-change: opacity;
-        /*bottom: calc(100% + 12px);*/
-        width: max(25em, 300px);
-        z-index: 99999;
-        display: grid;
-        gap: .75em;
-        color: #fff;
-      }
-
-      .tooltip-content * {
-        color: inherit;
-        margin: 0;
-      }
-
-      .tooltip-content::before {
-        content: '';
-        position: absolute;
-        bottom: calc(var(--tooltip-arrow-size) * -0.5);
-        left: 0;
-        border-width: 8px 8px 0;
-        border-top-color: initial;
-        width: var(--tooltip-arrow-size);
-        height: var(--tooltip-arrow-size);
-        background: var(--tooltip-background-color, #333);
-        transform: rotate(45deg);
-        left: calc(50% - var(--tooltip-arrow-size) / 2);
-      }
-
-      .tooltip-content.visible {
-        opacity: 1;
-        pointer-events: initial;
-      }
+    :host {
+      display: inline-flex;
+      --tooltip-arrow-size: 12px;
+    }
+    
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    button {
+      background: transparent;
+      border: none;
+      border-radius: 50%;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: inherit;
+    }
+    
+    button:is(:hover, :focus-visible, :focus) {
+      outline-offset: 2px;
+      outline: 1px auto #007cba;
+    }
+    
+    .tooltip-wrapper {
+      position: relative;
+      display: inline-flex;
+    }
+    
+    .tooltip-content {
+      position: fixed;
+      opacity: 0;
+      pointer-events: none;
+      background-color: var(--tooltip-background-color, #333);
+      border-radius: 4px;
+      padding: 1em 1.2em;
+      left: var(--tooltip-left);
+      top: calc(var(--tooltip-top) - var(--tooltip-arrow-size));
+      transform: translateX(-50%);
+      transition: opacity .3s ease;
+      will-change: opacity;
+      width: max(25em, 300px);
+      z-index: 99999;
+      display: grid;
+      gap: .75em;
+      color: #fff;
+    }
+    
+    .tooltip-content * {
+      color: inherit;
+      margin: 0;
+    }
+    
+    .tooltip-content::before {
+      content: '';
+      position: absolute;
+      bottom: calc(var(--tooltip-arrow-size) * -0.5);
+      left: 0;
+      border-width: 8px 8px 0;
+      border-top-color: initial;
+      width: var(--tooltip-arrow-size);
+      height: var(--tooltip-arrow-size);
+      background: var(--tooltip-background-color, #333);
+      transform: rotate(45deg);
+      left: calc(50% - var(--tooltip-arrow-size) / 2);
+    }
+    
+    .tooltip-content.visible {
+      opacity: 1;
+      pointer-events: initial;
+    }
     `;
   }
 }
